@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: white;
+            /* Ensure the iframe has a white background */
+        }
+
+        /* style.css — Krishna Digital Seva Kendra (Mobile-First) */
+
+        /* ===== Reset & Tokens ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue-900: #1e3a8a;
+            --blue-700: #1d4ed8;
+            --blue-600: #2563eb;
+            --blue-500: #3b82f6;
+            --blue-100: #dbeafe;
+            --blue-50: #eff6ff;
+            --green-600: #16a34a;
+            --green-500: #22c55e;
+            --ink: #0f172a;
+            --ink-2: #334155;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, .07);
+            --shadow-md: 0 6px 18px rgba(15, 23, 42, .08);
+            --shadow-lg: 0 10px 30px rgba(29, 78, 216, .16);
+            --nav-h: 62px;
+            --header-h: 58px;
+            --font: "Poppins", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font);
+            background: #dbe4f0;
+            color: var(--ink);
+            font-size: 15px;
+            line-height: 1.55;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img,
+        iframe {
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* App shell — mobile column, centered on bigger screens */
+        .app {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--bg);
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 40px rgba(15, 23, 42, .12);
+            overflow-x: hidden;
+        }
+
+        /* ===== Header ===== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: linear-gradient(135deg, var(--blue-700), var(--blue-600));
+            box-shadow: 0 2px 12px rgba(29, 78, 216, .35);
+        }
+
+        .header-inner {
+            height: var(--header-h);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: #fff;
+            color: var(--blue-700);
+            font-weight: 700;
+            font-size: 20px;
+            display: grid;
+            place-items: center;
+            box-shadow: inset 0 0 0 2px var(--blue-100);
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .brand-text strong {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .2px;
+        }
+
+        .brand-text small {
+            font-size: 11px;
+            opacity: .85;
+            font-weight: 500;
+        }
+
+        .header-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, .16);
+            border: 1px solid rgba(255, 255, 255, .35);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background .2s ease, transform .15s ease;
+        }
+
+        .header-call:active {
+            background: rgba(255, 255, 255, .3);
+            transform: scale(.96);
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            padding: 26px 16px 30px;
+            scroll-margin-top: calc(var(--header-h) + 6px);
+            scroll-margin-bottom: calc(var(--nav-h) + 16px);
+        }
+
+        .section-alt {
+            background: var(--blue-50);
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .section-head h2 {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--blue-900);
+            line-height: 1.3;
+        }
+
+        .section-head p {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            background:
+                radial-gradient(110% 70% at 85% -10%, rgba(59, 130, 246, .22), transparent 60%),
+                linear-gradient(180deg, #ffffff 0%, var(--blue-50) 100%);
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink-2);
+            max-width: 100%;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #94a3b8;
+            flex-shrink: 0;
+        }
+
+        .status-dot.open {
+            background: var(--green-500);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, .18);
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.shut {
+            background: #ef4444;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, .15);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 4px rgba(34, 197, 94, .18);
+            }
+
+            50% {
+                box-shadow: 0 0 0 7px rgba(34, 197, 94, .08);
+            }
+        }
+
+        .hero-logo {
+            width: 84px;
+            height: 84px;
+            margin: 18px auto 14px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, var(--blue-600), var(--blue-900));
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .hero-logo::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: 20px;
+            border: 2px dashed rgba(255, 255, 255, .35);
+        }
+
+        .hero-title {
+            font-size: 23px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--ink);
+        }
+
+        .hero-title span {
+            display: inline-block;
+            margin-top: 4px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--blue-700), var(--blue-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-sub {
+            margin-top: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blue-700);
+            line-height: 1.6;
+        }
+
+        .hero-desc {
+            margin-top: 10px;
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hero-chips {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--ink-2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-align: center;
+            transition: transform .15s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+            white-space: nowrap;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .btn:active {
+            transform: scale(.97);
+        }
+
+        .btn-lg {
+            padding: 14px 20px;
+            font-size: 15px;
+            width: 100%;
+        }
+
+        .btn-sm {
+            padding: 10px 14px;
+            font-size: 13px;
+        }
+
+        .btn-call {
+            background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, .35);
+        }
+
+        .btn-wa {
+            background: linear-gradient(135deg, #22c55e, #15803d);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(22, 163, 74, .3);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--blue-700);
+            border: 1.5px solid var(--blue-500);
+        }
+
+        .btn-outline:active {
+            background: var(--blue-50);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, .35);
+            padding: 13px 18px;
+            font-size: 14px;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--muted);
+            border: 1.5px dashed var(--line);
+        }
+
+        /* ===== Service Cards ===== */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .service-card {
+            background: var(--card);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(226, 232, 240, .8);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            grid-template-areas:
+                "icon body price"
+                "actions actions actions";
+            gap: 12px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue-500), var(--blue-700));
+            opacity: .85;
+        }
+
+        .svc-icon {
+            grid-area: icon;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .icon-blue {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .icon-indigo {
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+        }
+
+        .icon-sky {
+            background: linear-gradient(135deg, #0ea5e9, #0369a1);
+        }
+
+        .icon-cyan {
+            background: linear-gradient(135deg, #06b6d4, #0e7490);
+        }
+
+        .icon-teal {
+            background: linear-gradient(135deg, #14b8a6, #0f766e);
+        }
+
+        .svc-body {
+            grid-area: body;
+            min-width: 0;
+        }
+
+        .svc-body h3 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .svc-desc {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 3px;
+            line-height: 1.5;
+        }
+
+        .svc-price {
+            grid-area: price;
+            background: var(--blue-50);
+            color: var(--blue-700);
+            border: 1px solid var(--blue-100);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .svc-actions {
+            grid-area: actions;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
+        /* ===== Documents / Accordions ===== */
+        .reminder-banner {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            font-size: 13px;
+            color: #92400e;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .acc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .acc {
+            background: var(--card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            transition: box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .acc.open {
+            border-color: var(--blue-500);
+            box-shadow: var(--shadow-md);
+        }
+
+        .acc-head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 14px;
+            text-align: left;
+            min-height: 52px;
+        }
+
+        .acc-title {
+            flex: 1;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.35;
+            min-width: 0;
+        }
+
+        .acc-title em {
+            display: block;
+            font-style: normal;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--blue-600);
+            margin-top: 2px;
+        }
+
+        .acc-progress-pill {
+            font-size: 11px;
+            font-weight: 700;
+            background: var(--blue-50);
+            color: var(--blue-700);
+            border: 1px solid var(--blue-100);
+            padding: 3px 9px;
+            border-radius: 999px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .acc-progress-pill.done {
+            background: #dcfce7;
+            color: #15803d;
+            border-color: #bbf7d0;
+        }
+
+        .acc-chevron {
+            color: var(--muted);
+            flex-shrink: 0;
+            transition: transform .3s ease;
+        }
+
+        .acc.open .acc-chevron {
+            transform: rotate(180deg);
+            color: var(--blue-600);
+        }
+
+        .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease;
+        }
+
+        .acc-inner {
+            padding: 4px 14px 16px;
+            border-top: 1px dashed var(--line);
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--blue-50);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 14px 0 6px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--blue-500), var(--green-500));
+            transition: width .35s ease;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .progress-text.complete {
+            color: var(--green-600);
+            font-weight: 600;
+        }
+
+        .option-label {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--blue-700);
+            background: var(--blue-50);
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 8px;
+            margin: 8px 0 6px;
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 11px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 13.5px;
+            color: var(--ink-2);
+            background: #f8fafc;
+            border: 1px solid transparent;
+            transition: background .2s ease, border-color .2s ease;
+            cursor: pointer;
+            min-height: 44px;
+            line-height: 1.45;
+        }
+
+        .checklist label:active {
+            background: var(--blue-50);
+        }
+
+        .checklist input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .checklist .box {
+            width: 22px;
+            height: 22px;
+            border-radius: 7px;
+            border: 2px solid #cbd5e1;
+            background: #fff;
+            flex-shrink: 0;
+            margin-top: 1px;
+            display: grid;
+            place-items: center;
+            transition: background .2s ease, border-color .2s ease;
+        }
+
+        .checklist .box::after {
+            content: "";
+            width: 10px;
+            height: 5px;
+            border-left: 2.5px solid #fff;
+            border-bottom: 2.5px solid #fff;
+            transform: rotate(-45deg) scale(0);
+            transition: transform .2s ease;
+            margin-top: -2px;
+        }
+
+        .checklist input:checked+.box {
+            background: var(--green-500);
+            border-color: var(--green-500);
+        }
+
+        .checklist input:checked+.box::after {
+            transform: rotate(-45deg) scale(1);
+        }
+
+        .checklist input:checked~* {}
+
+        .checklist li.checked label {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+            text-decoration: line-through;
+            text-decoration-color: rgba(22, 101, 52, .4);
+        }
+
+        .checklist input:focus-visible+.box {
+            outline: 3px solid var(--blue-500);
+            outline-offset: 2px;
+        }
+
+        .doc-note {
+            font-size: 12.5px;
+            color: var(--muted);
+            background: #f8fafc;
+            border-left: 3px solid var(--blue-500);
+            border-radius: 0 8px 8px 0;
+            padding: 10px 12px;
+            line-height: 1.6;
+            margin: 6px 0 12px;
+        }
+
+        .doc-note.important {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+            color: #92400e;
+        }
+
+        .acc-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .acc-actions .btn {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .security-note {
+            margin-top: 18px;
+            font-size: 12.5px;
+            color: var(--ink-2);
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            line-height: 1.65;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ===== Location ===== */
+        .card {
+            background: var(--card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(226, 232, 240, .8);
+            padding: 18px 16px;
+        }
+
+        .location-card h3 {
+            font-size: 16px;
+            color: var(--blue-900);
+            margin-bottom: 8px;
+        }
+
+        .address {
+            font-style: normal;
+            font-size: 14px;
+            color: var(--ink-2);
+            line-height: 1.7;
+        }
+
+        .landmark {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #92400e;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            line-height: 1.6;
+        }
+
+        .loc-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .map-wrap {
+            margin-top: 14px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--line);
+            background: #fff;
+        }
+
+        .map-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 240px;
+            border: 0;
+        }
+
+        .hours-card {
+            margin-top: 14px;
+        }
+
+        .hours-card h3 {
+            font-size: 16px;
+            color: var(--blue-900);
+            margin-bottom: 10px;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 2px;
+            border-bottom: 1px dashed var(--line);
+            font-size: 13.5px;
+            color: var(--ink-2);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list strong {
+            color: var(--blue-700);
+            font-weight: 700;
+        }
+
+        .hours-list .closed {
+            color: #ef4444;
+        }
+
+        .hours-status {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hours-status.open {
+            color: var(--green-600);
+        }
+
+        .hours-status.shut {
+            color: #ef4444;
+        }
+
+        /* ===== Contact ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .contact-tile {
+            background: var(--card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--line);
+            padding: 16px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-align: center;
+            transition: transform .15s ease, box-shadow .2s ease;
+        }
+
+        .contact-tile:active {
+            transform: scale(.97);
+        }
+
+        .contact-tile strong {
+            font-size: 14px;
+            color: var(--ink);
+        }
+
+        .contact-tile small {
+            font-size: 11.5px;
+            color: var(--muted);
+            line-height: 1.45;
+            word-break: break-word;
+        }
+
+        .tile-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 6px;
+        }
+
+        .tile-call .tile-icon {
+            background: var(--blue-50);
+            color: var(--blue-700);
+        }
+
+        .tile-wa .tile-icon {
+            background: #dcfce7;
+            color: var(--green-600);
+        }
+
+        .tile-info .tile-icon {
+            background: var(--blue-50);
+            color: var(--blue-600);
+        }
+
+        .tile-call:hover {
+            box-shadow: 0 6px 16px rgba(37, 99, 235, .18);
+        }
+
+        .tile-wa:hover {
+            box-shadow: 0 6px 16px rgba(22, 163, 74, .18);
+        }
+
+        .trust-card {
+            margin-top: 16px;
+        }
+
+        .trust-card h3 {
+            font-size: 15.5px;
+            color: var(--blue-900);
+            margin-bottom: 10px;
+        }
+
+        .trust-list li {
+            font-size: 12.8px;
+            color: var(--ink-2);
+            line-height: 1.65;
+            padding: 7px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .trust-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: var(--blue-900);
+            color: #dbeafe;
+            text-align: center;
+            padding: 26px 18px calc(var(--nav-h) + 30px);
+            font-size: 12.5px;
+            line-height: 1.7;
+        }
+
+        .site-footer strong {
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .site-footer a {
+            color: #bfdbfe;
+            text-decoration: underline;
+        }
+
+        .footer-disclaimer {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #93c5fd;
+            opacity: .85;
+            line-height: 1.6;
+        }
+
+        .footer-copy {
+            margin-top: 10px;
+            font-size: 11px;
+            opacity: .7;
+        }
+
+        /* ===== Floating WhatsApp ===== */
+        .fab-whatsapp {
+            position: fixed;
+            bottom: calc(var(--nav-h) + 18px + env(safe-area-inset-bottom, 0px));
+            right: max(16px, calc(50% - 240px + 16px));
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #15803d);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 8px 22px rgba(21, 128, 61, .45);
+            z-index: 70;
+            animation: fabIn .5s ease .4s both;
+            transition: transform .15s ease;
+        }
+
+        .fab-whatsapp:active {
+            transform: scale(.92);
+        }
+
+        @keyframes fabIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== Bottom Navigation ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--line);
+            box-shadow: 0 -6px 22px rgba(15, 23, 42, .08);
+            display: flex;
+            z-index: 80;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            color: var(--muted);
+            font-size: 10.5px;
+            font-weight: 600;
+            position: relative;
+            padding: 6px 2px;
+            transition: color .2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 3px;
+            border-radius: 0 0 4px 4px;
+            background: linear-gradient(90deg, var(--blue-500), var(--blue-700));
+            transition: width .25s ease;
+        }
+
+        .nav-item.active {
+            color: var(--blue-700);
+        }
+
+        .nav-item.active::before {
+            width: 34px;
+        }
+
+        .nav-item.active svg {
+            transform: translateY(-1px) scale(1.06);
+        }
+
+        .nav-item svg {
+            transition: transform .2s ease;
+        }
+
+        /* ===== Reveal animation ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .fab-whatsapp {
+                animation: none;
+            }
+
+            * {
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+        }
+
+        /* ===== Small screens (320px) ===== */
+        @media (max-width: 359px) {
+            .hero-title {
+                font-size: 20px;
+            }
+
+            .hero-sub {
+                font-size: 14px;
+            }
+
+            .svc-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .acc-actions .btn {
+                min-width: 100%;
+            }
+
+            .service-card {
+                grid-template-columns: auto 1fr;
+                grid-template-areas: "icon body" "price price" "actions actions";
+            }
+
+            .svc-price {
+                justify-self: start;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .brand-text small {
+                display: none;
+            }
+        }
+
+        /* ===== Larger phones / tablets: keep mobile column ===== */
+        @media (min-width: 481px) {
+            body {
+                padding: 0;
+            }
+
+            .app {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- index.html — Krishna Digital Seva Kendra -->
+    <!DOCTYPE html>
+    <html lang="hi-IN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <meta name="theme-color" content="#1d4ed8" />
+        <title>Krishna Digital Seva Kendra | PAN, E-Shram, Ayushman & Aadhaar Services in Kandivali East, Mumbai</title>
+        <meta name="description"
+            content="Krishna Digital Seva Kendra, Kandivali East Mumbai — E-Shram Card ₹150, PAN Card Apply/Correction ₹200, PAN Download ₹110, Ayushman Card ₹150, Aadhaar Update Assistance ₹200. Call 7045725374. Mon–Fri, 1 PM – 6 PM." />
+        <meta name="robots" content="index, follow" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.8/500.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.8/600.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.8/700.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-devanagari@5.0.8/400.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-devanagari@5.0.8/600.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="app">
+
+            <!-- ===== Sticky Header ===== -->
+            <header class="site-header" id="top">
+                <div class="header-inner">
+                    <a class="brand" href="#home" aria-label="Krishna Digital Seva Kendra — Home">
+                        <span class="brand-logo" aria-hidden="true">K</span>
+                        <span class="brand-text">
+                            <strong>Krishna Digital</strong>
+                            <small>Seva Kendra</small>
+                        </span>
+                    </a>
+                    <a class="header-call" href="tel:+917045725374" aria-label="Call now on 7045725374">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        <span>Call</span>
+                    </a>
+                </div>
+            </header>
+
+            <main>
+
+                <!-- ===== HOME ===== -->
+                <section id="home" class="section hero" aria-labelledby="hero-title">
+                    <div class="hero-badge reveal">
+                        <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+                        <span id="openStatus">Opening hours: Mon–Fri, 1 PM – 6 PM</span>
+                    </div>
+
+                    <div class="hero-logo reveal" aria-hidden="true">KD</div>
+
+                    <h1 id="hero-title" class="hero-title reveal">आपका स्वागत है<br /><span>Krishna Digital Seva
+                            Kendra</span> में</h1>
+
+                    <p class="hero-sub reveal">PAN Card, E-Shram Card, Ayushman Card और Aadhaar Assistance Services — एक
+                        ही जगह।</p>
+
+                    <p class="hero-desc reveal">Welcome! We help you with PAN Card, E-Shram Card, Ayushman Card and
+                        Aadhaar update assistance at affordable prices. Aapko kisi bhi service ke liye humein call ya
+                        WhatsApp karein — hum aapki poori madad karenge.</p>
+
+                    <div class="hero-cta reveal">
+                        <a class="btn btn-call btn-lg" href="tel:+917045725374">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            Call Now — 7045725374
+                        </a>
+                        <a class="btn btn-wa btn-lg"
+                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20need%20assistance%20with%20a%20service."
+                            target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2zm5.4 14.1c-.24.66-1.4 1.28-1.94 1.32-.5.06-1.12.08-1.8-.12a15.7 15.7 0 0 1-1.64-.6c-2.9-1.24-4.78-4.16-4.92-4.36-.14-.2-1.16-1.54-1.16-2.94s.74-2.08 1-2.36c.26-.28.58-.36.76-.36l.54.02c.18 0 .42-.06.66.5.24.58.82 2 .9 2.14.06.14.1.32.02.5-.1.2-.14.32-.28.5l-.42.48c-.14.14-.28.3-.12.58.16.28.72 1.2 1.54 1.94 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.08.18-.2.72-.84.9-1.12.2-.28.38-.24.64-.14.26.1 1.66.78 1.94.92.28.14.48.22.54.34.08.12.08.66-.16 1.32z" />
+                            </svg>
+                            WhatsApp Us
+                        </a>
+                        <a class="btn btn-outline btn-lg" href="#services">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                            </svg>
+                            View Services &amp; Prices
+                        </a>
+                    </div>
+
+                    <div class="hero-chips reveal">
+                        <span class="chip">🕐 Mon–Fri · 1 PM – 6 PM</span>
+                        <span class="chip">📍 Kandivali East, Mumbai</span>
+                        <span class="chip">💬 Hindi &amp; Marathi support</span>
+                    </div>
+                </section>
+
+                <!-- ===== SERVICES ===== -->
+                <section id="services" class="section" aria-labelledby="services-title">
+                    <div class="section-head reveal">
+                        <h2 id="services-title">Our Services &amp; Prices</h2>
+                        <p>Har service ki price clear hai — koi hidden charge nahi.</p>
+                    </div>
+
+                    <div class="services-list">
+
+                        <!-- Service 1 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-blue" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                                    <circle cx="8" cy="11" r="2" />
+                                    <path d="M5 16c.8-1.4 2-2 3-2s2.2.6 3 2M14 10h4M14 14h4" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>E-Shram Card</h3>
+                                <p class="svc-desc">Unorganised sector workers ke liye E-Shram card registration
+                                    assistance.</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 150 rupees">₹150</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="e-shram-card">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20E-Shram%20Card%20(%E2%82%B9150).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                        <!-- Service 2 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-indigo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <circle cx="8" cy="10" r="2" />
+                                    <path d="M5 16c.8-1.4 2-2 3-2s2.2.6 3 2M14 9h4M14 13h4" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>PAN Card Apply</h3>
+                                <p class="svc-desc">Naya PAN card banwane ke liye application assistance.</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 200 rupees">₹200</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="pan-apply">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20PAN%20Card%20Apply%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                        <!-- Service 3 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-sky" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20h9" />
+                                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>PAN Card Correction</h3>
+                                <p class="svc-desc">PAN mein naam, date of birth ya address correction assistance.</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 200 rupees">₹200</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="pan-correction">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20PAN%20Card%20Correction%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                        <!-- Service 4 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-cyan" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <path d="M7 10l5 5 5-5" />
+                                    <path d="M12 15V3" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>PAN Card Download</h3>
+                                <p class="svc-desc">Aapka PAN card online download karke diya jayega.</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 110 rupees">₹110</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="pan-download">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20PAN%20Card%20Download%20(%E2%82%B9110).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                        <!-- Service 5 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-teal" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3.4 1-4.5 2.5C10.9 4 9.3 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z" />
+                                    <path d="M8.5 12.5l2 2 4.5-4.5" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>Ayushman Card</h3>
+                                <p class="svc-desc">Ayushman card banwane mein assistance (eligibility verification ke
+                                    saath).</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 150 rupees">₹150</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="ayushman-card">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20Ayushman%20Card%20(%E2%82%B9150).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                        <!-- Service 6 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-blue" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>Aadhaar Address Update Assistance</h3>
+                                <p class="svc-desc">Aadhaar mein address update karwane mein assistance.</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 200 rupees">₹200</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="aadhaar-address">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20Aadhaar%20Address%20Update%20Assistance%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                        <!-- Service 7 -->
+                        <article class="service-card reveal">
+                            <div class="svc-icon icon-indigo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="6" y="2" width="12" height="20" rx="2" />
+                                    <path d="M11 18h2" />
+                                </svg>
+                            </div>
+                            <div class="svc-body">
+                                <h3>Aadhaar Mobile Update Assistance</h3>
+                                <p class="svc-desc">Aadhaar mein mobile phone update karwane mein assistance.</p>
+                            </div>
+                            <div class="svc-price" aria-label="Price 200 rupees">₹200</div>
+                            <div class="svc-actions">
+                                <button type="button" class="btn btn-outline btn-sm" data-open-doc="aadhaar-mobile">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <path d="M14 2v6h6M9 13h6M9 17h6" />
+                                    </svg>
+                                    View Documents
+                                </button>
+                                <a class="btn btn-wa btn-sm"
+                                    href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20Aadhaar%20Mobile%20Update%20Assistance%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                    target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                            </div>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ===== DOCUMENTS ===== -->
+                <section id="documents" class="section section-alt" aria-labelledby="docs-title">
+                    <div class="section-head reveal">
+                        <h2 id="docs-title">📋 Documents Ghar Se Lekar Aayein</h2>
+                        <p>Visit se pehle apne documents ready rakhein — neeche checklist par tick karein jo documents
+                            aapke paas hain.</p>
+                    </div>
+
+                    <div class="reminder-banner reveal" role="note">
+                        <strong>⏰ Yaad rakhein:</strong> Aane se pehle humein call ya WhatsApp zaroor karein. Hum Monday
+                        se Friday, 1 PM se 6 PM tak khule rehte hain.
+                    </div>
+
+                    <div class="acc-list">
+
+                        <!-- Doc 1 -->
+                        <div class="acc reveal" id="doc-e-shram-card">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-e-shram-card">
+                                <span class="acc-title">E-Shram Card <em>₹150</em></span>
+                                <span class="acc-progress-pill" data-pill="e-shram-card">0/3</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-e-shram-card" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="e-shram-card"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="e-shram-card" aria-live="polite">0 of 3
+                                        documents ready</p>
+                                    <ul class="checklist" data-service="e-shram-card">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar-linked mobile phone</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Bank passbook</label></li>
+                                    </ul>
+                                    <p class="doc-note">Original documents saath laayein. Service subject to official
+                                        eligibility &amp; verification.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20E-Shram%20Card%20(%E2%82%B9150).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm"
+                                            data-reset="e-shram-card">Reset Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doc 2 -->
+                        <div class="acc reveal" id="doc-pan-apply">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-pan-apply">
+                                <span class="acc-title">PAN Card Apply <em>₹200</em></span>
+                                <span class="acc-progress-pill" data-pill="pan-apply">0/4</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-pan-apply" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="pan-apply"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="pan-apply" aria-live="polite">0 of 4 documents
+                                        ready</p>
+                                    <ul class="checklist" data-service="pan-apply">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar-linked mobile phone</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Signature</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Birth certificate</label></li>
+                                    </ul>
+                                    <p class="doc-note">ℹ️ Additional documents may be required depending on the
+                                        application method.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20PAN%20Card%20Apply%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm" data-reset="pan-apply">Reset
+                                            Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doc 3 -->
+                        <div class="acc reveal" id="doc-pan-correction">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-pan-correction">
+                                <span class="acc-title">PAN Card Correction <em>₹200</em></span>
+                                <span class="acc-progress-pill" data-pill="pan-correction">0/5</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-pan-correction" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="pan-correction"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="pan-correction" aria-live="polite">0 of 5
+                                        documents ready</p>
+                                    <ul class="checklist" data-service="pan-correction">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Existing PAN Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Proof of correct name / date of birth /
+                                                address (correction ke hisaab se)</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Signature (if required)</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Mobile phone</label></li>
+                                    </ul>
+                                    <p class="doc-note">Correction ke liye sahi proof document laana zaroori hai.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20PAN%20Card%20Correction%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm"
+                                            data-reset="pan-correction">Reset Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doc 4 -->
+                        <div class="acc reveal" id="doc-pan-download">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-pan-download">
+                                <span class="acc-title">PAN Card Download <em>₹110</em></span>
+                                <span class="acc-progress-pill" data-pill="pan-download">0/2</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-pan-download" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="pan-download"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="pan-download" aria-live="polite">0 of 2
+                                        documents ready</p>
+                                    <ul class="checklist" data-service="pan-download">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>PAN Card number</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card (if needed for
+                                                verification)</label></li>
+                                    </ul>
+                                    <p class="doc-note">PAN number yaad rakhein ya copy saath laayein.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20PAN%20Card%20Download%20(%E2%82%B9110).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm"
+                                            data-reset="pan-download">Reset Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doc 5 -->
+                        <div class="acc reveal" id="doc-ayushman-card">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-ayushman-card">
+                                <span class="acc-title">Ayushman Card <em>₹150</em></span>
+                                <span class="acc-progress-pill" data-pill="ayushman-card">0/2</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-ayushman-card" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="ayushman-card"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="ayushman-card" aria-live="polite">0 of 2
+                                        documents ready</p>
+                                    <ul class="checklist" data-service="ayushman-card">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar-linked mobile phone</label></li>
+                                    </ul>
+                                    <p class="doc-note">ℹ️ Eligibility verification required. Card banna eligibility par
+                                        depend karta hai.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20Ayushman%20Card%20(%E2%82%B9150).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm"
+                                            data-reset="ayushman-card">Reset Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doc 6 -->
+                        <div class="acc reveal" id="doc-aadhaar-address">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-aadhaar-address">
+                                <span class="acc-title">Aadhaar Address Update <em>₹200</em></span>
+                                <span class="acc-progress-pill" data-pill="aadhaar-address">0/7</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-aadhaar-address" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="aadhaar-address"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="aadhaar-address" aria-live="polite">0 of 7
+                                        documents ready</p>
+                                    <p class="option-label">Option 1 — Apne address proof ke saath</p>
+                                    <ul class="checklist" data-service="aadhaar-address">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Mobile phone</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Voter ID ya electricity bill (accepted
+                                                address proof, as applicable)</label></li>
+                                    </ul>
+                                    <p class="option-label">Option 2 — Family member ke address ke saath</p>
+                                    <ul class="checklist" data-service="aadhaar-address">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Mobile phone</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Family member ka Aadhaar Card (correct
+                                                address ke saath)</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Family member ka Aadhaar-linked mobile
+                                                number</label></li>
+                                    </ul>
+                                    <p class="doc-note">ℹ️ Aap Option 1 ya Option 2 mein se koi bhi tarika apna sakte
+                                        hain. Family-based address update requires an accepted relationship proof and
+                                        applicable UIDAI verification.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20Aadhaar%20Address%20Update%20Assistance%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm"
+                                            data-reset="aadhaar-address">Reset Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doc 7 -->
+                        <div class="acc reveal" id="doc-aadhaar-mobile">
+                            <button type="button" class="acc-head" aria-expanded="false"
+                                aria-controls="panel-aadhaar-mobile">
+                                <span class="acc-title">Aadhaar Mobile Update <em>₹200</em></span>
+                                <span class="acc-progress-pill" data-pill="aadhaar-mobile">0/3</span>
+                                <svg class="acc-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="acc-panel" id="panel-aadhaar-mobile" role="region">
+                                <div class="acc-inner">
+                                    <div class="progress-track" aria-hidden="true">
+                                        <div class="progress-fill" data-bar="aadhaar-mobile"></div>
+                                    </div>
+                                    <p class="progress-text" data-text="aadhaar-mobile" aria-live="polite">0 of 3
+                                        documents ready</p>
+                                    <ul class="checklist" data-service="aadhaar-mobile">
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Aadhaar Card</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>New mobile phone</label></li>
+                                        <li><label><input type="checkbox" /><span class="box"
+                                                    aria-hidden="true"></span>Old mobile phone (if available)</label>
+                                        </li>
+                                    </ul>
+                                    <p class="doc-note important">⚠️ Important: Aadhaar mobile updates require visiting
+                                        an authorized Aadhaar enrolment/update centre and biometric verification where
+                                        required. Hum aapko is process mein guide karenge.</p>
+                                    <div class="acc-actions">
+                                        <a class="btn btn-wa btn-sm"
+                                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20want%20to%20enquire%20about%20Aadhaar%20Mobile%20Update%20Assistance%20(%E2%82%B9200).%20Please%20tell%20me%20the%20required%20documents."
+                                            target="_blank" rel="noopener">WhatsApp Enquiry</a>
+                                        <button type="button" class="btn btn-ghost btn-sm"
+                                            data-reset="aadhaar-mobile">Reset Checklist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p class="security-note reveal">🔒 Aapki suraksha zaroori hai: Hum kabhi bhi OTP, password ya
+                        sensitive documents WhatsApp par nahi maangte. Please aisi koi bhi jaankari kisi ko online share
+                        na karein.</p>
+                </section>
+
+                <!-- ===== LOCATION ===== -->
+                <section id="location" class="section" aria-labelledby="location-title">
+                    <div class="section-head reveal">
+                        <h2 id="location-title">📍 Our Location</h2>
+                        <p>Hum yahan par hain — aaiye aur seva lijiye.</p>
+                    </div>
+
+                    <div class="card location-card reveal">
+                        <h3>Krishna Digital Seva Kendra</h3>
+                        <address class="address">
+                            Lokmanya Chawl No. 2, Hanuman Nagar,<br />
+                            Kandivali East, Mumbai,<br />
+                            Maharashtra – 400101
+                        </address>
+                        <p class="landmark">
+                            <strong>Landmark:</strong> Masjid ke paas, Balwadi mein. Agar location samajh nahi aaye toh
+                            humein call karein.
+                        </p>
+                        <div class="loc-actions">
+                            <a class="btn btn-primary"
+                                href="https://www.google.com/maps/dir/?api=1&amp;destination=Lokmanya%20Chawl%20No.%202%2C%20Hanuman%20Nagar%2C%20Kandivali%20East%2C%20Mumbai%2C%20Maharashtra%20400101"
+                                target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M3 11l19-9-9 19-2-8-8-2z" />
+                                </svg>
+                                Get Directions
+                            </a>
+                            <a class="btn btn-call" href="tel:+917045725374">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                Call for Location
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="map-wrap reveal">
+                        <iframe title="Google Maps — Krishna Digital Seva Kendra, Hanuman Nagar, Kandivali East, Mumbai"
+                            src="https://www.google.com/maps?q=Lokmanya%20Chawl%2C%20Hanuman%20Nagar%2C%20Kandivali%20East%2C%20Mumbai%2C%20Maharashtra%20400101&amp;output=embed"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="card hours-card reveal">
+                        <h3>🕐 Opening Hours</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday – Friday</span><strong>1 PM – 6 PM</strong></li>
+                            <li><span>Saturday</span><strong class="closed">Closed</strong></li>
+                            <li><span>Sunday</span><strong class="closed">Closed</strong></li>
+                        </ul>
+                        <p class="hours-status" id="hoursStatusLine" aria-live="polite"></p>
+                    </div>
+                </section>
+
+                <!-- ===== CONTACT ===== -->
+                <section id="contact" class="section section-alt" aria-labelledby="contact-title">
+                    <div class="section-head reveal">
+                        <h2 id="contact-title">📞 Contact Us</h2>
+                        <p>Koi bhi sawaal ho — call karein ya WhatsApp karein.</p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <a class="contact-tile tile-call reveal" href="tel:+917045725374">
+                            <span class="tile-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </span>
+                            <strong>Call Now</strong>
+                            <small>+91 70457 25374</small>
+                        </a>
+                        <a class="contact-tile tile-wa reveal"
+                            href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20need%20assistance."
+                            target="_blank" rel="noopener">
+                            <span class="tile-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                                    <path
+                                        d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2zm5.4 14.1c-.24.66-1.4 1.28-1.94 1.32-.5.06-1.12.08-1.8-.12a15.7 15.7 0 0 1-1.64-.6c-2.9-1.24-4.78-4.16-4.92-4.36-.14-.2-1.16-1.54-1.16-2.94s.74-2.08 1-2.36c.26-.28.58-.36.76-.36l.54.02c.18 0 .42-.06.66.5.24.58.82 2 .9 2.14.06.14.1.32.02.5-.1.2-.14.32-.28.5l-.42.48c-.14.14-.28.3-.12.58.16.28.72 1.2 1.54 1.94 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.08.18-.2.72-.84.9-1.12.2-.28.38-.24.64-.14.26.1 1.66.78 1.94.92.28.14.48.22.54.34.08.12.08.66-.16 1.32z" />
+                                </svg>
+                            </span>
+                            <strong>WhatsApp</strong>
+                            <small>+91 70457 25374</small>
+                        </a>
+                        <div class="contact-tile tile-info reveal">
+                            <span class="tile-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 6v6l4 2" />
+                                </svg>
+                            </span>
+                            <strong>Timings</strong>
+                            <small>Mon–Fri · 1 PM – 6 PM</small>
+                        </div>
+                        <div class="contact-tile tile-info reveal">
+                            <span class="tile-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <strong>Address</strong>
+                            <small>Hanuman Nagar, Kandivali East, Mumbai – 400101</small>
+                        </div>
+                    </div>
+
+                    <div class="card trust-card reveal">
+                        <h3>Zaroori Jaankari</h3>
+                        <ul class="trust-list">
+                            <li>✔️ Sabhi services ki prices clear hain — koi hidden charge nahi.</li>
+                            <li>✔️ Hum kabhi OTP, password ya sensitive documents WhatsApp par nahi maangte.</li>
+                            <li>✔️ Aadhaar/PAN details aapke saamne hi handle ki jaati hain.</li>
+                            <li>ℹ️ Sabhi services official eligibility aur verification ke adheen hain — approval
+                                guaranteed nahi hota.</li>
+                            <li>ℹ️ Kuch kaam (jaise Aadhaar mobile update) ke liye authorized government centre jaana
+                                padta hai — hum aapko guide karenge.</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- ===== Footer ===== -->
+            <footer class="site-footer">
+                <p><strong>Krishna Digital Seva Kendra</strong></p>
+                <p>Lokmanya Chawl No. 2, Hanuman Nagar, Kandivali East, Mumbai – 400101</p>
+                <p>📞 <a href="tel:+917045725374">+91 70457 25374</a> · Mon–Fri, 1 PM – 6 PM</p>
+                <p class="footer-disclaimer">Yeh ek private seva kendra hai, kisi sarkari sanstha dwara approved ya
+                    authorized nahi. Services subject to official eligibility and verification.</p>
+                <p class="footer-copy">© <span id="year">2026</span> Krishna Digital Seva Kendra. All rights reserved.
+                </p>
+            </footer>
+
+            <!-- ===== Floating WhatsApp ===== -->
+            <a class="fab-whatsapp"
+                href="https://wa.me/917045725374?text=Hello%20Krishna%20Digital%20Seva%20Kendra%2C%20I%20need%20assistance."
+                target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2zm5.4 14.1c-.24.66-1.4 1.28-1.94 1.32-.5.06-1.12.08-1.8-.12a15.7 15.7 0 0 1-1.64-.6c-2.9-1.24-4.78-4.16-4.92-4.36-.14-.2-1.16-1.54-1.16-2.94s.74-2.08 1-2.36c.26-.28.58-.36.76-.36l.54.02c.18 0 .42-.06.66.5.24.58.82 2 .9 2.14.06.14.1.32.02.5-.1.2-.14.32-.28.5l-.42.48c-.14.14-.28.3-.12.58.16.28.72 1.2 1.54 1.94 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.08.18-.2.72-.84.9-1.12.2-.28.38-.24.64-.14.26.1 1.66.78 1.94.92.28.14.48.22.54.34.08.12.08.66-.16 1.32z" />
+                </svg>
+            </a>
+
+            <!-- ===== Bottom Navigation ===== -->
+            <nav class="bottom-nav" aria-label="Main navigation">
+                <a href="#home" class="nav-item active" data-nav="home" aria-label="Home">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 10.5L12 3l9 7.5" />
+                        <path d="M5 9.5V21h14V9.5" />
+                        <path d="M10 21v-6h4v6" />
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <a href="#services" class="nav-item" data-nav="services" aria-label="Services">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                    </svg>
+                    <span>Services</span>
+                </a>
+                <a href="#documents" class="nav-item" data-nav="documents" aria-label="Documents">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 11l3 3 8-8" />
+                        <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" />
+                    </svg>
+                    <span>Documents</span>
+                </a>
+                <a href="#location" class="nav-item" data-nav="location" aria-label="Location">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span>Location</span>
+                </a>
+                <a href="#contact" class="nav-item" data-nav="contact" aria-label="Contact">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+        </div>
+        <script src="script.js"></script>
+    </body>
+
+    </html>
+
+
+    <script>
+        /* script.js — Krishna Digital Seva Kendra */
+        (function () {
+            "use strict";
+
+            /* ---------- Helpers ---------- */
+            var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
+            var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+
+            var STORAGE_KEY = "kdsk-checklists-v1";
+
+            function loadState() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+                catch (e) { return {}; }
+            }
+            function saveState(state) {
+                try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+                catch (e) { /* storage unavailable — ignore */ }
+            }
+
+            var checkState = loadState();
+
+            /* ---------- 1. Open / Closed status ---------- */
+            function updateOpenStatus() {
+                var now = new Date();
+                var day = now.getDay();          // 0 = Sun ... 6 = Sat
+                var mins = now.getHours() * 60 + now.getMinutes();
+                var openMins = 13 * 60;          // 1 PM
+                var closeMins = 18 * 60;         // 6 PM
+                var isOpen = day >= 1 && day <= 5 && mins >= openMins && mins < closeMins;
+
+                var dot = $("#statusDot");
+                var badgeText = $("#openStatus");
+                var line = $("#hoursStatusLine");
+
+                if (dot) dot.className = "status-dot " + (isOpen ? "open" : "shut");
+
+                if (isOpen) {
+                    if (badgeText) badgeText.textContent = "Abhi khula hai · Open now — closes at 6 PM";
+                    if (line) { line.textContent = "✅ Hum abhi khule hain — aap aa sakte hain!"; line.className = "hours-status open"; }
+                } else {
+                    if (badgeText) badgeText.textContent = "Abhi band hai · Mon–Fri, 1 PM – 6 PM";
+                    if (line) { line.textContent = "🔒 Hum abhi band hain. Hum Monday–Friday, 1 PM se 6 PM tak khule rehte hain."; line.className = "hours-status shut"; }
+                }
+            }
+            updateOpenStatus();
+            setInterval(updateOpenStatus, 60000);
+
+            /* ---------- 2. Footer year ---------- */
+            var yearEl = $("#year");
+            if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+            /* ---------- 3. Bottom nav — smooth scroll + active state ---------- */
+            var navItems = $$(".nav-item");
+            var sections = ["home", "services", "documents", "location", "contact"]
+                .map(function (id) { return document.getElementById(id); })
+                .filter(Boolean);
+
+            navItems.forEach(function (item) {
+                item.addEventListener("click", function (ev) {
+                    var targetId = item.getAttribute("href").slice(1);
+                    var target = document.getElementById(targetId);
+                    if (target) {
+                        ev.preventDefault();
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                        setActiveNav(targetId);
+                    }
+                });
+            });
+
+            function setActiveNav(id) {
+                navItems.forEach(function (n) {
+                    n.classList.toggle("active", n.getAttribute("data-nav") === id);
+                });
+            }
+
+            // Scroll-spy
+            if ("IntersectionObserver" in window) {
+                var spy = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) setActiveNav(entry.target.id);
+                    });
+                }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+                sections.forEach(function (sec) { spy.observe(sec); });
+            }
+
+            /* ---------- 4. Reveal-on-scroll animations ---------- */
+            var revealEls = $$(".reveal");
+            if ("IntersectionObserver" in window) {
+                var revealObserver = new IntersectionObserver(function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08, rootMargin: "0px 0px -4% 0px" });
+                revealEls.forEach(function (el) { revealObserver.observe(el); });
+            } else {
+                revealEls.forEach(function (el) { el.classList.add("visible"); });
+            }
+
+            /* ---------- 5. Accordions (Documents) ---------- */
+            function setPanel(panel, open) {
+                var acc = panel.closest(".acc");
+                var head = $(".acc-head", acc);
+                if (open) {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    acc.classList.add("open");
+                    head.setAttribute("aria-expanded", "true");
+                } else {
+                    panel.style.maxHeight = "0px";
+                    acc.classList.remove("open");
+                    head.setAttribute("aria-expanded", "false");
+                }
+            }
+
+            $$(".acc-head").forEach(function (head) {
+                head.addEventListener("click", function () {
+                    var panel = document.getElementById(head.getAttribute("aria-controls"));
+                    if (!panel) return;
+                    var isOpen = head.getAttribute("aria-expanded") === "true";
+                    // Close others for a tidy single-open experience
+                    $$(".acc-panel").forEach(function (p) { if (p !== panel) setPanel(p, false); });
+                    setPanel(panel, !isOpen);
+                    if (!isOpen) {
+                        setTimeout(function () { panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 260);
+                    }
+                });
+            });
+
+            // Keep open panels sized correctly after content/resize changes
+            window.addEventListener("resize", function () {
+                $$(".acc.open .acc-panel").forEach(function (p) {
+                    p.style.maxHeight = p.scrollHeight + "px";
+                });
+            });
+
+            // "View Documents" buttons in Services section → open + scroll to matching accordion
+            $$("[data-open-doc]").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var docId = "doc-" + btn.getAttribute("data-open-doc");
+                    var acc = document.getElementById(docId);
+                    if (!acc) return;
+                    var panel = $(".acc-panel", acc);
+                    var head = $(".acc-head", acc);
+                    $$(".acc-panel").forEach(function (p) { if (p !== panel) setPanel(p, false); });
+                    setPanel(panel, true);
+                    acc.scrollIntoView({ behavior: "smooth", block: "start" });
+                    setActiveNav("documents");
+                    setTimeout(function () {
+                        if (head) head.focus({ preventScroll: true });
+                    }, 600);
+                });
+            });
+
+            /* ---------- 6. Document checklists + progress ---------- */
+            function updateProgress(serviceId) {
+                var boxes = $$('.checklist[data-service="' + serviceId + '"] input[type="checkbox"]');
+                var total = boxes.length;
+                var checked = boxes.filter(function (b) { return b.checked; }).length;
+
+                var bar = document.querySelector('[data-bar="' + serviceId + '"]');
+                var pill = document.querySelector('[data-pill="' + serviceId + '"]');
+                var text = document.querySelector('[data-text="' + serviceId + '"]');
+
+                var pct = total ? Math.round((checked / total) * 100) : 0;
+
+                if (bar) bar.style.width = pct + "%";
+                if (pill) {
+                    pill.textContent = checked + "/" + total;
+                    pill.classList.toggle("done", total > 0 && checked === total);
+                }
+                if (text) {
+                    if (total > 0 && checked === total) {
+                        text.textContent = "🎉 Sabhi " + total + " documents ready — shabash!";
+                        text.classList.add("complete");
+                    } else {
+                        text.textContent = checked + " of " + total + " documents ready";
+                        text.classList.remove("complete");
+                    }
+                }
+
+                // Refresh panel height while open (text length may change)
+                var acc = bar ? bar.closest(".acc") : null;
+                if (acc && acc.classList.contains("open")) {
+                    var panel = $(".acc-panel", acc);
+                    if (panel) panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            }
+
+            function readPersisted(serviceId) {
+                return Array.isArray(checkState[serviceId]) ? checkState[serviceId] : null;
+            }
+
+            $$(".checklist").forEach(function (list) {
+                var serviceId = list.getAttribute("data-service");
+                var boxes = $$('input[type="checkbox"]', list);
+
+                // For services split across multiple lists (Option 1 / Option 2),
+                // compute progress across ALL lists of that service.
+                boxes.forEach(function (box, index) {
+                    var saved = readPersisted(serviceId);
+                    var globalIndex = getGlobalIndex(list, box);
+                    if (saved && typeof saved[globalIndex] === "boolean") {
+                        box.checked = saved[globalIndex];
+                    }
+                    syncRowClass(box);
+
+                    box.addEventListener("change", function () {
+                        syncRowClass(box);
+                        persistService(serviceId);
+                        updateProgress(serviceId);
+                    });
+                });
+
+                updateProgress(serviceId);
+            });
+
+            function getAllBoxesForService(serviceId) {
+                return $$('.checklist[data-service="' + serviceId + '"] input[type="checkbox"]');
+            }
+
+            function getGlobalIndex(list, box) {
+                var serviceId = list.getAttribute("data-service");
+                return getAllBoxesForService(serviceId).indexOf(box);
+            }
+
+            function syncRowClass(box) {
+                var li = box.closest("li");
+                if (li) li.classList.toggle("checked", box.checked);
+            }
+
+            function persistService(serviceId) {
+                checkState[serviceId] = getAllBoxesForService(serviceId).map(function (b) { return b.checked; });
+                saveState(checkState);
+            }
+
+            /* ---------- 7. Reset checklist buttons ---------- */
+            $$("[data-reset]").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var serviceId = btn.getAttribute("data-reset");
+                    getAllBoxesForService(serviceId).forEach(function (b) {
+                        b.checked = false;
+                        syncRowClass(b);
+                    });
+                    delete checkState[serviceId];
+                    saveState(checkState);
+                    updateProgress(serviceId);
+                });
+            });
+
+            /* ---------- 8. Header brand → scroll to top ---------- */
+            var brandLink = $(".brand");
+            if (brandLink) {
+                brandLink.addEventListener("click", function (ev) {
+                    ev.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    setActiveNav("home");
+                });
+            }
+
+            /* ---------- 9. Prevent any accidental horizontal overflow ---------- */
+            document.documentElement.style.overflowX = "hidden";
+        })();
+
+
+    </script>
+</body>
+
+</html>
